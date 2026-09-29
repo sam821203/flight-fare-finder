@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 type AuthMode = "signin" | "signup";
 
 export const Route = createFileRoute("/auth")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Sign In | Flight Price Notifier" },
