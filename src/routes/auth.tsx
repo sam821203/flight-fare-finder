@@ -73,7 +73,7 @@ function AuthPage() {
       return;
     }
 
-    await navigate({ to: "/app", replace: true });
+    window.location.assign("/app");
   }
 
   const isSignIn = mode === "signin";
@@ -186,13 +186,14 @@ function AuthPage() {
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
             {isSignIn ? "New here?" : "Already have an account?"}{" "}
-            <button
+            <Button
               type="button"
-              className="font-medium text-primary transition-colors hover:text-primary/80"
+              variant="link"
+              className="h-auto p-0 font-medium"
               onClick={() => switchMode(isSignIn ? "signup" : "signin")}
             >
               {isSignIn ? "Create an account" : "Sign in"}
-            </button>
+            </Button>
           </p>
         </div>
       </section>
