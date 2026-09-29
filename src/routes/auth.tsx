@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Eye, EyeOff, LoaderCircle, LockKeyhole, Mail, Plane } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
 
@@ -31,7 +31,6 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const router = useRouter();
   const [mode, setMode] = useState<AuthMode>("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,7 +73,6 @@ function AuthPage() {
       return;
     }
 
-    await router.invalidate();
     await navigate({ to: "/app", replace: true });
   }
 
