@@ -42,7 +42,7 @@ export function Dashboard() {
       <section className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl items-center px-5 py-16 sm:px-8">
         <div className="dashboard-grid absolute inset-0 -z-0 opacity-40" aria-hidden="true" />
         <div className="relative z-10 w-full max-w-3xl animate-rise-in">
-          <div className="crayon-edge mb-8 flex size-14 items-center justify-center border-2 border-primary/40 bg-accent text-primary">
+          <div className="brush-edge mb-8 flex size-14 items-center justify-center border border-secondary/30 bg-accent text-primary">
             <BellRing className="size-6" aria-hidden="true" />
           </div>
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">Dashboard</p>

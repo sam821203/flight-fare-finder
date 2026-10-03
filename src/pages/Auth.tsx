@@ -92,7 +92,7 @@ export function Auth({ mode }: { mode: AuthMode }) {
           </p>
         </div>
 
-        <div className="crayon-edge border-2 border-border bg-card/90 p-6 shadow-panel backdrop-blur-xl sm:p-8">
+        <div className="brush-edge border-[1.5px] border-secondary/80 bg-card/90 p-6 shadow-panel backdrop-blur-xl sm:p-8">
           <div className="mb-7 grid grid-cols-2 rounded-md bg-muted p-1" aria-label="Authentication mode">
             <Button
               type="button"

@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-sans: "Nunito", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Caveat Brush", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Noto Serif TC", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,56 +62,54 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-surface: var(--surface);
-  --color-sun: var(--sun);
-  --color-marigold: var(--marigold);
-  --color-magenta: var(--magenta);
-  --shadow-glow:
-    0 0 0 3px color-mix(in oklab, var(--border) 55%, transparent),
-    0 8px 22px color-mix(in oklab, var(--magenta) 40%, transparent);
-  --shadow-panel: 0 22px 60px color-mix(in oklab, var(--border) 38%, transparent);
+  --color-ink: var(--ink);
+  --color-ochre: var(--ochre);
+  --color-blush: var(--blush);
+  --shadow-glow: 3px 3px 0 color-mix(in oklab, var(--ink) 85%, transparent);
+  --shadow-panel: 0 18px 44px color-mix(in oklab, var(--ink) 10%, transparent);
 }
 
 :root {
-  /* Crayon palette sampled from the dragon artwork:
-     bubblegum-pink paper, cobalt-blue dragon, magenta wings,
-     lemon sunbeam and marigold grass, navy-ink outlines. */
-  --radius: 0.9rem;
-  --background: oklch(0.85 0.095 345);
-  --foreground: oklch(0.27 0.11 275);
-  --card: oklch(0.94 0.04 345);
-  --card-foreground: oklch(0.27 0.11 275);
-  --popover: oklch(0.94 0.04 345);
-  --popover-foreground: oklch(0.27 0.11 275);
-  --primary: oklch(0.52 0.19 263);
-  --primary-foreground: oklch(0.985 0.035 100);
-  --secondary: oklch(0.64 0.22 345);
-  --secondary-foreground: oklch(0.99 0.01 345);
-  --muted: oklch(0.88 0.07 345);
-  --muted-foreground: oklch(0.4 0.13 305);
-  --accent: oklch(0.93 0.14 105);
-  --accent-foreground: oklch(0.27 0.11 275);
-  --destructive: oklch(0.5 0.2 25);
-  --destructive-foreground: oklch(0.99 0.01 25);
-  --border: oklch(0.6 0.15 300);
-  --input: oklch(0.6 0.15 300);
-  --ring: oklch(0.52 0.19 263);
-  --surface: oklch(0.89 0.07 345);
-  --sun: oklch(0.94 0.15 105);
-  --marigold: oklch(0.84 0.15 80);
-  --magenta: oklch(0.66 0.23 345);
-  --chart-1: oklch(0.52 0.19 263);
-  --chart-2: oklch(0.66 0.23 345);
-  --chart-3: oklch(0.84 0.15 80);
-  --chart-4: oklch(0.6 0.15 300);
-  --chart-5: oklch(0.94 0.15 105);
-  --sidebar: oklch(0.94 0.04 345);
-  --sidebar-foreground: oklch(0.27 0.11 275);
-  --sidebar-primary: oklch(0.52 0.19 263);
-  --sidebar-primary-foreground: oklch(0.985 0.035 100);
-  --sidebar-accent: oklch(0.93 0.14 105);
-  --sidebar-accent-foreground: oklch(0.27 0.11 275);
-  --sidebar-border: oklch(0.6 0.15 300);
-  --sidebar-ring: oklch(0.52 0.19 263);
+  /* Gouache street-scene palette sampled from the autumn artwork:
+     off-white paper, navy-ink coats and lamp posts, vermilion coats,
+     ochre trousers and leaves, blush-pink gables. */
+  --radius: 0.375rem;
+  --background: oklch(0.957 0.006 85);
+  --foreground: oklch(0.25 0.06 255);
+  --card: oklch(0.985 0.004 85);
+  --card-foreground: oklch(0.25 0.06 255);
+  --popover: oklch(0.985 0.004 85);
+  --popover-foreground: oklch(0.25 0.06 255);
+  --primary: oklch(0.58 0.2 33);
+  --primary-foreground: oklch(0.99 0.004 85);
+  --secondary: oklch(0.27 0.07 255);
+  --secondary-foreground: oklch(0.97 0.006 85);
+  --muted: oklch(0.925 0.012 70);
+  --muted-foreground: oklch(0.46 0.035 255);
+  --accent: oklch(0.9 0.035 45);
+  --accent-foreground: oklch(0.25 0.06 255);
+  --destructive: oklch(0.5 0.19 28);
+  --destructive-foreground: oklch(0.99 0.004 85);
+  --border: oklch(0.83 0.018 70);
+  --input: oklch(0.72 0.03 255);
+  --ring: oklch(0.58 0.2 33);
+  --surface: oklch(0.935 0.018 55);
+  --ink: oklch(0.25 0.06 255);
+  --ochre: oklch(0.72 0.14 70);
+  --blush: oklch(0.88 0.045 45);
+  --chart-1: oklch(0.58 0.2 33);
+  --chart-2: oklch(0.27 0.07 255);
+  --chart-3: oklch(0.72 0.14 70);
+  --chart-4: oklch(0.88 0.045 45);
+  --chart-5: oklch(0.82 0.13 80);
+  --sidebar: oklch(0.985 0.004 85);
+  --sidebar-foreground: oklch(0.25 0.06 255);
+  --sidebar-primary: oklch(0.58 0.2 33);
+  --sidebar-primary-foreground: oklch(0.99 0.004 85);
+  --sidebar-accent: oklch(0.9 0.035 45);
+  --sidebar-accent-foreground: oklch(0.25 0.06 255);
+  --sidebar-border: oklch(0.83 0.018 70);
+  --sidebar-ring: oklch(0.58 0.2 33);
 }
 
 .dark {
@@ -158,38 +156,31 @@
     position: relative;
     min-height: 100vh;
     background-color: var(--color-background);
-    background-image: linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--magenta) 45%, var(--background)) 0%,
-      var(--background) 45%,
-      color-mix(in oklab, white 30%, var(--background)) 100%
-    );
-    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     letter-spacing: 0;
   }
 
-  /* Colored-pencil paper grain over everything */
+  /* Cold-press paper tooth over everything */
   body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.45;
+    opacity: 0.22;
     mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.95 0.05' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.25  0 0 0 0 0.6  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
-    background-size: 240px 240px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' seed='3'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.38  0 0 0 0 0.3  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+    background-size: 260px 260px;
   }
 
   h1, h2, h3 {
     letter-spacing: 0.01em;
   }
 
-  /* Caveat Brush ships one weight; avoid muddy faux-bold */
   .font-display {
-    font-synthesis: none;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -216,54 +207,59 @@
   animation: plane-float 4s ease-in-out infinite;
 }
 
-/* Lemon sunbeam slanting in from the top-right, like the dragon's light */
+/* Dry-brush gouache dabs: vermilion + ochre strokes top-left,
+   a blush gable and a navy roof block on the right */
 @utility flight-path {
   background-image:
-    linear-gradient(
-      122deg,
-      transparent 48%,
-      color-mix(in oklab, var(--sun) 75%, transparent) 55%,
-      color-mix(in oklab, var(--sun) 85%, white) 61%,
-      color-mix(in oklab, var(--sun) 85%, white) 67%,
-      color-mix(in oklab, var(--sun) 60%, transparent) 74%,
-      transparent 80%
-    ),
-    radial-gradient(ellipse at 85% -5%, var(--sun), transparent 40%);
-  filter: blur(3px);
-  mask-image: linear-gradient(to bottom, black 30%, transparent 95%);
+    linear-gradient(var(--primary), var(--primary)),
+    linear-gradient(color-mix(in oklab, var(--primary) 70%, var(--blush)), color-mix(in oklab, var(--primary) 70%, var(--blush))),
+    linear-gradient(var(--ochre), var(--ochre)),
+    linear-gradient(var(--blush), var(--blush)),
+    linear-gradient(var(--ink), var(--ink)),
+    linear-gradient(color-mix(in oklab, var(--ochre) 75%, white), color-mix(in oklab, var(--ochre) 75%, white));
+  background-repeat: no-repeat;
+  background-size: 10px 170px, 14px 110px, 9px 90px, 15% 58%, 7% 11%, 5% 12%;
+  background-position: 53% 6%, 55.5% 16%, 50.5% 22%, 86% 82%, 91% 20%, 73% 30%;
+  opacity: 0.5;
+
+  @media (max-width: 1023px) {
+    background-size: 8px 110px, 11px 80px, 7px 60px, 0 0, 0 0, 0 0;
+    background-position: 90% 12%, 94% 16%, 86% 19%, 0 0, 0 0, 0 0;
+    opacity: 0.4;
+  }
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.035' numOctaves='2' seed='11'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.6'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+  mask-size: 180px 180px;
 }
 
-/* Loose crayon hatching behind the dashboard */
+/* Soft blush facade and an ochre dab behind the dashboard */
 @utility dashboard-grid {
   background-image:
-    repeating-linear-gradient(
-      100deg,
-      color-mix(in oklab, var(--border) 30%, transparent) 0 2px,
-      transparent 2px 18px
-    ),
-    radial-gradient(ellipse at 95% 0%, color-mix(in oklab, var(--sun) 65%, transparent), transparent 50%);
-  mask-image: linear-gradient(to right, black, transparent 80%);
+    linear-gradient(var(--blush), var(--blush)),
+    linear-gradient(var(--ochre), var(--ochre)),
+    linear-gradient(var(--primary), var(--primary));
+  background-repeat: no-repeat;
+  background-size: 26% 70%, 8px 120px, 8px 70px;
+  background-position: 96% 60%, 72% 18%, 74% 34%;
+  opacity: 0.5;
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.035' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.6'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+  mask-size: 180px 180px;
 }
 
-/* Marigold grass strip, drawn with short crayon strokes */
-@utility crayon-grass {
-  background-color: var(--marigold);
+/* Fallen autumn leaves scattered along the footer */
+@utility autumn-leaves {
+  background-color: var(--background);
   background-image:
-    repeating-linear-gradient(
-      78deg,
-      color-mix(in oklab, var(--marigold) 70%, oklch(0.72 0.17 60)) 0 3px,
-      transparent 3px 9px
-    ),
-    repeating-linear-gradient(
-      96deg,
-      color-mix(in oklab, var(--sun) 80%, transparent) 0 2px,
-      transparent 2px 13px
-    );
+    radial-gradient(ellipse 7px 4px at 20% 30%, var(--primary) 90%, transparent),
+    radial-gradient(ellipse 5px 3px at 62% 70%, var(--ochre) 90%, transparent),
+    radial-gradient(ellipse 6px 3px at 85% 25%, color-mix(in oklab, var(--ochre) 60%, oklch(0.55 0.08 50)) 90%, transparent),
+    radial-gradient(ellipse 4px 2px at 40% 80%, var(--primary) 90%, transparent),
+    radial-gradient(ellipse 5px 3px at 8% 75%, var(--ochre) 90%, transparent);
+  background-size: 230px 90px, 310px 110px, 270px 80px, 190px 120px, 350px 100px;
 }
 
-/* Slightly wobbly hand-drawn outline */
-@utility crayon-edge {
-  border-radius: 1.4rem 0.9rem 1.6rem 0.8rem / 0.9rem 1.5rem 0.8rem 1.4rem;
+/* Hand-cut paper edge */
+@utility brush-edge {
+  border-radius: 0.6rem 0.25rem 0.7rem 0.3rem / 0.3rem 0.65rem 0.25rem 0.6rem;
 }
 
 @utility radar {
