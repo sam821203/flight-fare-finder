@@ -38,7 +38,7 @@ export function Landing() {
   return (
     <main className="overflow-hidden bg-background text-foreground">
       <section className="relative min-h-[92vh] border-b border-border">
-        <div className="flight-path absolute inset-0 opacity-70" aria-hidden="true" />
+        <div className="flight-path absolute inset-0 opacity-90" aria-hidden="true" />
         <header className="relative z-20 mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
           <Link to="/" className="flex items-center gap-3 font-semibold text-foreground">
             <span className="flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-glow">
@@ -91,7 +91,7 @@ export function Landing() {
                 <p className="mt-1 font-display text-2xl font-semibold">TPE</p>
               </div>
               <Plane className="plane-float absolute right-[8%] top-[18%] size-10 rotate-45 text-primary" />
-              <div className="absolute bottom-[16%] right-[2%] w-52 rounded-md border border-border bg-card/80 p-4 shadow-panel backdrop-blur-md">
+              <div className="crayon-edge absolute bottom-[16%] right-[2%] w-52 border-2 border-border bg-card/85 p-4 shadow-panel backdrop-blur-md">
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>TPE → NRT</span>
                   <span>Watching</span>
@@ -112,7 +112,7 @@ export function Landing() {
               你決定預算，我們負責盯價格。
             </h2>
           </div>
-          <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border lg:grid-cols-3">
+          <div className="crayon-edge grid gap-0.5 overflow-hidden border-2 border-border bg-border lg:grid-cols-3">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
@@ -135,8 +135,8 @@ export function Landing() {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <footer className="crayon-grass border-t-2 border-border">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm font-semibold text-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>© 2026 Flight Price Notifier</p>
           <div className="flex items-center gap-2">
             <RouteIcon className="size-4 text-primary" aria-hidden="true" />
