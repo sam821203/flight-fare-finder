@@ -12,4 +12,6 @@
 ## Project architecture
 
 - Lovable Cloud is used for email/password authentication only; do not create application tables because flight-subscription data belongs to the later AWS milestone.
-- Authenticated screens live under the `_authenticated` route layout so account checks happen before private UI renders.
+- The app is a plain Vite + React SPA (no SSR). `vite build` outputs static files to `dist/`, and `vercel.json` rewrites every path to `index.html` so deep links resolve client-side.
+- Routing uses React Router (`src/App.tsx`): `/`, `/sign-in`, `/sign-up`, `/app` (`/auth` redirects to `/sign-in`).
+- Authenticated screens are nested under the `RequireAuth` layout route so account checks happen before private UI renders.

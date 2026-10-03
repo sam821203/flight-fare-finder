@@ -1,27 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router";
 import { ArrowRight, BellRing, Eye, Plane, Route as RouteIcon, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Flight Price Notifier | 機票降價通知" },
-      {
-        name: "description",
-        content: "Set a route and a target price — we email you when the fare drops.",
-      },
-      { property: "og:title", content: "Flight Price Notifier | 機票降價通知" },
-      {
-        property: "og:description",
-        content: "Set a route and a target price — we email you when the fare drops.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
+import { usePageMeta } from "@/lib/use-page-meta";
 
 const features = [
   {
@@ -47,7 +28,13 @@ const features = [
   },
 ];
 
-function Index() {
+export function Landing() {
+  usePageMeta({
+    title: "Flight Price Notifier | 機票降價通知",
+    description: "Set a route and a target price — we email you when the fare drops.",
+    twitterCard: "summary_large_image",
+  });
+
   return (
     <main className="overflow-hidden bg-background text-foreground">
       <section className="relative min-h-[92vh] border-b border-border">
@@ -60,7 +47,7 @@ function Index() {
             <span className="text-sm sm:text-base">Flight Price Notifier</span>
           </Link>
           <Button asChild variant="outline">
-            <Link to="/auth">Sign in / 登入</Link>
+            <Link to="/sign-in">Sign in / 登入</Link>
           </Button>
         </header>
 
@@ -83,7 +70,7 @@ function Index() {
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <Button asChild size="lg" className="h-12 px-6">
-                  <Link to="/auth">
+                  <Link to="/sign-in">
                     Start watching fares
                     <ArrowRight aria-hidden="true" />
                   </Link>

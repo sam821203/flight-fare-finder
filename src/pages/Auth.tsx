@@ -1,37 +1,27 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Eye, EyeOff, LoaderCircle, LockKeyhole, Mail, Plane } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
+import { usePageMeta } from "@/lib/use-page-meta";
 
 type AuthMode = "signin" | "signup";
 
-export const Route = createFileRoute("/auth")({
-  ssr: false,
-  head: () => ({
-    meta: [
-      { title: "Sign In | Flight Price Notifier" },
-      {
-        name: "description",
-        content: "Sign in or create your Flight Price Notifier account.",
-      },
-      { property: "og:title", content: "Sign In | Flight Price Notifier" },
-      {
-        property: "og:description",
-        content: "Sign in or create your Flight Price Notifier account.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
-  component: AuthPage,
-});
-
-function AuthPage() {
+export function Auth({ mode }: { mode: AuthMode }) {
+  usePageMeta(
+    mode === "signin"
+      ? {
+          title: "Sign In | Flight Price Notifier",
+          description: "Sign in or create your Flight Price Notifier account.",
+        }
+      : {
+          title: "Sign Up | Flight Price Notifier",
+          description: "Create your Flight Price Notifier account.",
+        },
+  );
   const navigate = useNavigate();
-  const [mode, setMode] = useState<AuthMode>("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +31,7 @@ function AuthPage() {
   useEffect(() => {
     let active = true;
     void supabase.auth.getUser().then(({ data }) => {
-      if (active && data.user) void navigate({ to: "/app", replace: true });
+      if (active && data.user) void navigate("/app", { replace: true });
     });
     return () => {
       active = false;
@@ -49,8 +39,8 @@ function AuthPage() {
   }, [navigate]);
 
   function switchMode(nextMode: AuthMode) {
-    setMode(nextMode);
     setError("");
+    if (nextMode !== mode) void navigate(nextMode === "signin" ? "/sign-in" : "/sign-up");
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {

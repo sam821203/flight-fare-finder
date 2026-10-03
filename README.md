@@ -51,3 +51,18 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Architecture & deployment
+
+This is a static single-page app built with Vite + React and React Router — there is no server-side rendering.
+
+| Path | Page |
+| --- | --- |
+| `/` | Landing page |
+| `/sign-in` | Sign in |
+| `/sign-up` | Sign up |
+| `/app` | Dashboard (requires sign-in) |
+
+- `npm run build` runs `vite build` and writes the static site to `dist/`.
+- `vercel.json` rewrites all routes to `index.html`, so deep links like `/app` work on Vercel.
+- Supabase settings come from `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` at build time (see `.env`).

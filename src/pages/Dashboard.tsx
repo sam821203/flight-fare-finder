@@ -1,39 +1,25 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { BellRing, LogOut, Plane, Route as RouteIcon } from "lucide-react";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 
+import { useAuthUser } from "@/components/RequireAuth";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { usePageMeta } from "@/lib/use-page-meta";
 
-export const Route = createFileRoute("/_authenticated/app")({
-  head: () => ({
-    meta: [
-      { title: "Dashboard | Flight Price Notifier" },
-      {
-        name: "description",
-        content: "Your Flight Price Notifier dashboard for future route tracking and fare alerts.",
-      },
-      { property: "og:title", content: "Dashboard | Flight Price Notifier" },
-      {
-        property: "og:description",
-        content: "Your Flight Price Notifier dashboard for future route tracking and fare alerts.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
-  component: AppDashboard,
-});
-
-function AppDashboard() {
-  const { user } = Route.useRouteContext();
+export function Dashboard() {
+  usePageMeta({
+    title: "Dashboard | Flight Price Notifier",
+    description: "Your Flight Price Notifier dashboard for future route tracking and fare alerts.",
+  });
+  const user = useAuthUser();
   const navigate = useNavigate();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
   async function handleSignOut() {
     setIsSigningOut(true);
     await supabase.auth.signOut();
-    await navigate({ to: "/auth", replace: true });
+    await navigate("/sign-in", { replace: true });
   }
 
   return (
