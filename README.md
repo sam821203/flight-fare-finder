@@ -12,7 +12,7 @@ Card 1: 「盯緊熱門航線 (Always-on route watching)」 — 持續監控台�
 Card 2: 「達標自動通知 (Target-price email alerts)」 — 低於你設定的目標價，就寄 email 提醒你，附上立即訂購連結。
 Card 3: 「隨時取消 (Cancel anytime)」 — 月訂閱制，不想用隨時停，沒有綁約。
 Footer with copyright 「© 2026 Flight Price Notifier」.
-Authentication using Lovable's built-in Supabase-style auth (use whatever auth backend Lovable provides by default — Lovable Cloud is fine for this v1; we'll swap to a user-owned Supabase project in a later step):
+Authentication using the project's own Supabase project (email/password auth via Supabase Auth):
 
 Sign Up page with email + password
 Sign In page with email + password
@@ -65,4 +65,4 @@ This is a static single-page app built with Vite + React and React Router — th
 
 - `npm run build` runs `vite build` and writes the static site to `dist/`.
 - `vercel.json` rewrites all routes to `index.html`, so deep links like `/app` work on Vercel.
-- Supabase settings come from `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` at build time (see `.env`).
+- Supabase settings come from `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` at build time (see `.env`). On Vercel, set both under Project → Settings → Environment Variables.
