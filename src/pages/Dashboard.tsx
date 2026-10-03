@@ -17,6 +17,7 @@ import { usePageMeta } from "@/lib/use-page-meta";
 const PLANS: { name: PlanName; label: string; route: string; hint: number }[] = [
   { name: "tokyo", label: "台北 ✈ 東京", route: "TPE-TYO", hint: 9325 },
   { name: "seoul", label: "台北 ✈ 首爾", route: "TPE-SEL", hint: 5989 },
+  { name: "london", label: "台北 ✈ 倫敦", route: "TPE-LON", hint: 22583 },
 ];
 
 function PlanCard({
@@ -193,7 +194,7 @@ export function Dashboard() {
               每 30 分鐘檢查一次下個月出發的最低票價。
             </p>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PLANS.map((plan) => (
               <PlanCard
                 key={plan.name}
