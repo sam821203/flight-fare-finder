@@ -4,12 +4,16 @@ const API_URL =
 
 export type PlanName = "tokyo" | "seoul" | "london";
 
+export type SubscriptionStatus = "pending_payment" | "active" | "cancelled" | "expired";
+
 export type Subscription = {
   route: string;
   plan_name: PlanName;
   target_price: number;
   currency: string;
   updated_at?: string;
+  subscription_status?: SubscriptionStatus | undefined;
+  current_period_end_date?: string | null | undefined;
 };
 
 export async function fetchSubscriptions(email: string): Promise<Subscription[]> {
@@ -25,7 +29,36 @@ export async function saveSubscription(email: string, planName: PlanName, target
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ email, plan_name: planName, target_price: targetPrice }),
   });
+  const contentType = res.headers.get("content-type") ?? "";
+  if (res.ok && contentType.includes("text/html")) {
+    const html = await res.text();
+    document.open();
+    document.write(html);
+    document.close();
+    return null;
+  }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error ?? `Failed to subscribe (${res.status})`);
-  return data as { route: string; plan_name: PlanName; target_price: number };
+  return data as {
+    route: string;
+    plan_name: PlanName;
+    target_price: number;
+    subscription_status?: SubscriptionStatus;
+    current_period_end_date?: string | null;
+  };
+}
+
+export async function cancelSubscription(email: string, route: string) {
+  const res = await fetch(`${API_URL}/cancel`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email, route }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error ?? `Failed to cancel (${res.status})`);
+  return data as {
+    route: string;
+    subscription_status: SubscriptionStatus;
+    current_period_end_date?: string;
+  };
 }
