@@ -25,8 +25,8 @@ const PLANS: { name: PlanName; label: string; route: string; hint: number }[] = 
 const MONTHLY_FEE = 300;
 
 const STATUS_BADGE: Record<SubscriptionStatus, { label: string; className: string }> = {
-  active: { label: "已訂閱（有效）", className: "bg-primary text-primary-foreground" },
-  pending_payment: { label: "未完成付款", className: "bg-secondary text-secondary-foreground" },
+  active: { label: "已訂閱（有效）", className: "bg-secondary text-secondary-foreground" },
+  pending_payment: { label: "未完成付款", className: "bg-amber-50 text-amber-700" },
   cancelled: { label: "已取消", className: "bg-muted text-muted-foreground" },
   expired: { label: "已結束", className: "bg-muted text-muted-foreground" },
 };
@@ -122,19 +122,19 @@ function PlanCard({
       : `訂閱 NT$${MONTHLY_FEE}/月`;
 
   return (
-    <div className="brush-edge flex flex-col border border-border bg-card p-6 text-card-foreground">
+    <div className="brush-edge flex flex-col border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-panel">
       <div className="flex items-start justify-between gap-3">
-        <h2 className="font-display text-2xl font-semibold">{plan.label}</h2>
+        <h2 className="text-xl font-bold tracking-tight">{plan.label}</h2>
         {badge && (
           <span
-            className={`inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold ${badge.className}`}
+            className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ${badge.className}`}
           >
             {status === "active" && <Check className="size-3" aria-hidden="true" />}
             {badge.label}
           </span>
         )}
       </div>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
         近期最低價約 NT${plan.hint.toLocaleString()}，票價低於你的目標價時會寄 email 通知你。月費
         NT${MONTHLY_FEE}，可隨時取消。
       </p>
@@ -152,9 +152,9 @@ function PlanCard({
 
       {subscription && !editing ? (
         <div className="mt-6 flex flex-col gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">目前目標價</p>
-            <p className="mt-1 text-2xl font-semibold">
+          <div className="rounded-xl bg-accent px-4 py-4">
+            <p className="text-xs font-medium text-muted-foreground">目前目標價</p>
+            <p className="mt-1 font-display text-3xl font-extrabold">
               NT${subscription.target_price.toLocaleString()}
             </p>
           </div>
@@ -201,10 +201,10 @@ function PlanCard({
               placeholder="10000"
               value={target}
               onChange={(e) => setTarget(e.target.value)}
-              className="pl-11"
+              className="h-11 rounded-lg bg-card pl-11"
             />
           </div>
-          <Button type="submit" disabled={saving}>
+          <Button type="submit" disabled={saving} className="h-11 rounded-lg px-5 font-semibold">
             {submitLabel}
           </Button>
         </form>
@@ -252,52 +252,52 @@ export function Dashboard() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <header className="border-b border-border/70 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <header className="border-b border-border bg-card">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link to="/" className="flex items-center gap-3 font-semibold text-foreground">
-            <span className="flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-glow">
-              <Plane className="size-4.5" aria-hidden="true" />
+            <span className="flex size-9 items-center justify-center rounded-full border-2 border-primary text-primary">
+              <Plane className="size-4" aria-hidden="true" />
             </span>
-            <span className="hidden sm:inline">Flight Price Notifier</span>
+            <span className="hidden font-bold tracking-tight sm:inline">Flight Price Notifier</span>
           </Link>
-          <Button variant="outline" onClick={handleSignOut} disabled={isSigningOut}>
+          <Button variant="outline" className="rounded-lg" onClick={handleSignOut} disabled={isSigningOut}>
             <LogOut aria-hidden="true" />
             {isSigningOut ? "Signing out…" : "Sign Out"}
           </Button>
         </div>
       </header>
 
-      <section className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl items-center px-5 py-16 sm:px-8">
-        <div className="dashboard-grid absolute inset-0 -z-0 opacity-40" aria-hidden="true" />
-        <div className="relative z-10 w-full max-w-4xl animate-rise-in">
-          <div className="brush-edge mb-8 flex size-14 items-center justify-center border border-secondary/30 bg-accent text-primary">
+      <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl items-start px-5 py-12 sm:px-8">
+        <div className="dashboard-grid absolute inset-0 -z-0 opacity-70" aria-hidden="true" />
+        <div className="relative z-10 w-full animate-rise-in">
+          <div className="mb-6 flex size-12 items-center justify-center rounded-full bg-secondary text-primary">
             <BellRing className="size-6" aria-hidden="true" />
           </div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+          <p className="mb-2 text-sm font-semibold text-primary">
             Dashboard
           </p>
-          <h1 className="font-display text-3xl font-semibold leading-tight sm:text-5xl">
+          <h1 className="font-display break-all text-3xl font-bold leading-tight sm:text-4xl">
             Hi {user.email}
           </h1>
-          <div className="mt-9 border-l-2 border-primary pl-6 sm:pl-8">
-            <p className="max-w-2xl text-xl font-medium leading-relaxed text-foreground sm:text-2xl">
+          <div className="mt-7 rounded-2xl border border-border bg-card px-6 py-5 sm:px-7">
+            <p className="max-w-2xl text-lg font-semibold leading-relaxed text-foreground sm:text-xl">
               選一條航線、設定你的目標價，降到目標時我們會寄 email 給你。
             </p>
-            <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+            <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
               每 30 分鐘檢查一次下個月出發的最低票價。
             </p>
           </div>
           {purchase === "success" && (
-            <p className="mt-8 border border-primary/40 bg-accent px-4 py-3 text-sm text-foreground">
+            <p className="mt-6 rounded-xl border border-primary/30 bg-accent px-4 py-3 text-sm font-medium text-secondary-foreground">
               付款完成！綠界確認後訂閱會在幾秒內生效，並寄一封歡迎信給你。
             </p>
           )}
           {purchase === "failed" && (
-            <p className="mt-8 border border-destructive/40 px-4 py-3 text-sm text-destructive">
+            <p className="mt-6 rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
               付款沒有成功，請再試一次。
             </p>
           )}
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {PLANS.map((plan) => (
               <PlanCard
                 key={plan.name}
@@ -309,7 +309,7 @@ export function Dashboard() {
             ))}
           </div>
           {loadError && <p className="mt-4 text-sm text-destructive">{loadError}</p>}
-          <div className="mt-12 flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="mt-10 flex items-center gap-3 text-sm text-muted-foreground">
             <RouteIcon className="size-4 text-primary" aria-hidden="true" />
             <span>Taipei → your next affordable escape</span>
           </div>

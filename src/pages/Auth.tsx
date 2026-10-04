@@ -70,7 +70,7 @@ export function Auth({ mode }: { mode: AuthMode }) {
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-5 py-12 text-foreground">
-      <div className="flight-path absolute inset-0 opacity-50" aria-hidden="true" />
+      <div className="flight-path absolute inset-0" aria-hidden="true" />
       <Link
         to="/"
         className="absolute left-5 top-6 z-10 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:left-8 sm:top-8"
@@ -81,10 +81,10 @@ export function Auth({ mode }: { mode: AuthMode }) {
 
       <section className="relative z-10 w-full max-w-md animate-rise-in">
         <div className="mb-8 text-center">
-          <span className="mx-auto flex size-12 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-glow">
+          <span className="mx-auto flex size-12 items-center justify-center rounded-full border-2 border-primary bg-card text-primary">
             <Plane className="size-5" aria-hidden="true" />
           </span>
-          <h1 className="mt-5 font-display text-3xl font-semibold">
+          <h1 className="mt-5 font-display text-3xl font-bold">
             {isSignIn ? "Welcome back" : "Create your account"}
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -92,12 +92,12 @@ export function Auth({ mode }: { mode: AuthMode }) {
           </p>
         </div>
 
-        <div className="brush-edge border-[1.5px] border-secondary/80 bg-card/90 p-6 shadow-panel backdrop-blur-xl sm:p-8">
-          <div className="mb-7 grid grid-cols-2 rounded-md bg-muted p-1" aria-label="Authentication mode">
+        <div className="brush-edge border border-border bg-card p-6 shadow-panel sm:p-8">
+          <div className="mb-7 grid grid-cols-2 gap-1 rounded-xl border border-border bg-card p-1" aria-label="Authentication mode">
             <Button
               type="button"
               variant={isSignIn ? "secondary" : "ghost"}
-              className="shadow-none"
+              className="h-10 rounded-lg font-semibold shadow-none"
               onClick={() => switchMode("signin")}
             >
               Sign In
@@ -105,7 +105,7 @@ export function Auth({ mode }: { mode: AuthMode }) {
             <Button
               type="button"
               variant={!isSignIn ? "secondary" : "ghost"}
-              className="shadow-none"
+              className="h-10 rounded-lg font-semibold shadow-none"
               onClick={() => switchMode("signup")}
             >
               Sign Up
@@ -124,7 +124,7 @@ export function Auth({ mode }: { mode: AuthMode }) {
                   type="email"
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="h-11 pl-10"
+                  className="h-11 rounded-lg pl-10"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   required
@@ -144,7 +144,7 @@ export function Auth({ mode }: { mode: AuthMode }) {
                   autoComplete={isSignIn ? "current-password" : "new-password"}
                   placeholder="At least 6 characters"
                   minLength={6}
-                  className="h-11 px-10"
+                  className="h-11 rounded-lg px-10"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   required
@@ -168,7 +168,7 @@ export function Auth({ mode }: { mode: AuthMode }) {
               </p>
             ) : null}
 
-            <Button type="submit" size="lg" className="h-11 w-full" disabled={isSubmitting}>
+            <Button type="submit" size="lg" className="h-12 w-full rounded-lg text-base font-semibold" disabled={isSubmitting}>
               {isSubmitting ? <LoaderCircle className="animate-spin" aria-hidden="true" /> : null}
               {isSubmitting ? "Please wait…" : isSignIn ? "Sign In / 登入" : "Create Account / 註冊"}
             </Button>
